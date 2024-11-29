@@ -37,7 +37,6 @@ const UpdatePackageModal: React.FC<UpdatePackageModalProps> = ({
     photo: string[];
   }) => {
     const { packageName, packageCost, photo } = data;
-    console.log("photo", photo);
     const filteredPhotos: Photo[] = [
       ...packageData.photo,
       ...photo
@@ -53,8 +52,6 @@ const UpdatePackageModal: React.FC<UpdatePackageModalProps> = ({
       packageCost,
       photo: filteredPhotos,
     });
-
-    console.log(filteredPhotos);
 
     onClose();
   };

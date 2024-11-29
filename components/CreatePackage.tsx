@@ -20,7 +20,6 @@ export default function CreatePackage() {
         })),
     };
 
-    console.log("package data with uid and photo objects", packageDataWithUid);
     addPackage(packageDataWithUid);
   };
 
