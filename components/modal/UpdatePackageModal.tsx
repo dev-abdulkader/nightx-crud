@@ -53,6 +53,8 @@ const UpdatePackageModal: React.FC<UpdatePackageModalProps> = ({
       photo: filteredPhotos,
     });
 
+    console.log(filteredPhotos);
+
     onClose();
   };
 

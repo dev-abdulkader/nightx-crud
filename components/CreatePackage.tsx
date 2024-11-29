@@ -6,7 +6,7 @@ import { usePackageContext } from "@/context/PackageContext";
 import { v4 as uuidv4 } from "uuid";
 
 export default function CreatePackage() {
-  const { addPackage } = usePackageContext();
+  const { addPackage, setResetApp } = usePackageContext();
 
   const submitHandler = async (data: any) => {
     const packageDataWithUid = {
@@ -21,14 +21,11 @@ export default function CreatePackage() {
     };
 
     addPackage(packageDataWithUid);
+    setResetApp(true);
   };
 
   return (
-    <Form
-      submitHandler={submitHandler}
-      //   defaultValues={{ packageName: "", packageCost: "", photo: "" }}
-      className="flex flex-col gap-2"
-    >
+    <Form submitHandler={submitHandler} className="flex flex-col gap-2">
       <h3 className="text-center text-lg my-5">PACKAGE CREATION FORM</h3>
 
       <FormInput

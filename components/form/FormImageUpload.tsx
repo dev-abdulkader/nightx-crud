@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import Image from "next/image";
 import { BsFillPlusCircleFill } from "react-icons/bs";
+import { usePackageContext } from "@/context/PackageContext";
 
 interface IImageUpload {
   name: string;
@@ -27,7 +28,14 @@ const FormImageUpload = ({
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const { resetApp, setResetApp } = usePackageContext();
+  useEffect(() => {
+    if (resetApp) {
+      setImagePreview(null);
+      setValue(name, null);
+    }
+    setResetApp(false);
+  }, [resetApp, setValue, name, setResetApp]);
   const handleFileUpload = async (file: File) => {
     setLoading(true);
     setError(null);

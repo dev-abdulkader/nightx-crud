@@ -28,6 +28,8 @@ interface PackageContextType {
     packageUid: string,
     updatedData: Omit<PackageData, "uid">
   ) => void;
+  resetApp: boolean;
+  setResetApp: (reset: boolean) => void;
 }
 
 const PackageContext = createContext<PackageContextType | undefined>(undefined);
@@ -41,6 +43,7 @@ export const PackageProvider: React.FC<PackageProviderProps> = ({
 }) => {
   const [packages, setPackages] = useState<PackageData[]>([]);
   const [isMounted, setIsMounted] = useState(false);
+  const [resetApp, setResetApp] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -88,7 +91,14 @@ export const PackageProvider: React.FC<PackageProviderProps> = ({
 
   return (
     <PackageContext.Provider
-      value={{ packages, addPackage, removeImage, updatePackage }}
+      value={{
+        packages,
+        addPackage,
+        removeImage,
+        updatePackage,
+        resetApp,
+        setResetApp,
+      }}
     >
       {children}
     </PackageContext.Provider>
