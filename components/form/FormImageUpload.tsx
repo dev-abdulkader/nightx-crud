@@ -33,8 +33,8 @@ const FormImageUpload = ({
     if (resetApp) {
       setImagePreview(null);
       setValue(name, null);
+      setResetApp(false);
     }
-    setResetApp(false);
   }, [resetApp, setValue, name, setResetApp]);
   const handleFileUpload = async (file: File) => {
     setLoading(true);

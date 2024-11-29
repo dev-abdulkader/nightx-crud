@@ -9,6 +9,7 @@ export default function CreatePackage() {
   const { addPackage, setResetApp } = usePackageContext();
 
   const submitHandler = async (data: any) => {
+    setResetApp(false);
     const packageDataWithUid = {
       ...data,
       uid: uuidv4(),
